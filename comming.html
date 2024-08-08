@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
         }
         .container {
-            background-image: url('/api/placeholder/1920/1080');
+            background-image: url('anh/tải xuống (13).jpg');
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -31,9 +31,28 @@
             font-size: 3em;
             margin-bottom: 20px;
         }
+        /* Parallax Pixel Background Animation */
+        #stars1, #stars2, #stars3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            animation: stars 5s infinite linear;
+        }
+        @keyframes stars {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
     </style>
 </head>
 <body>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
     <div class="container">
         <div class="content">
             <h1>Coming Soon</h1>

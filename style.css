@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Varta:wght@300..700&display=swap');
 :root {
     --bgColor: #223344;
     --bgColor2: #090a0f;
@@ -213,7 +214,7 @@ body {
 }
 
 .popup-quote {
-    font-family : Baskerville, Georgia, serif;
+    font-family: 'Varta', sans-serif;
     font-style : italic;
     position: flex;
     color: var(--accentColor);
