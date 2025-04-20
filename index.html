@@ -10,9 +10,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Core theme CSS -->
     <link rel="stylesheet" href="style.css">
+   
+    
   </head>
 
   <body>
+    <audio id="bgMusic" autoplay muted loop hidden>
+      <source src="100.mp3" type="audio/mpeg">
+      Trình duyệt của bạn không hỗ trợ phát âm thanh.
+    </audio>
+    
+    <script>
+      window.addEventListener("click", function () {
+        const audio = document.getElementById("bgMusic");
+        audio.muted = false;
+        audio.play();
+        audio.volume = 0.4; // Tuỳ chỉnh âm lượng
+      });
+    </script>
+    
     <pointer-particles></pointer-particles >
     <!-- Parallax Pixel Background Animation -->
     <section class="animated-background">
@@ -27,7 +43,8 @@
     <a id="profilePicture" href="#popup">
       <img src="anh/1 (12).jpg" alt="Profile Picture">
     </a>
-
+    
+    
     <div class="overlay" id="popup">
       <div class="popup">
         <div class="popup-photo">
@@ -101,8 +118,9 @@
     </div>
 
     <div id="hashtag">
-      #BeHappy❤
+      #Miss you❤
     </div>
     <script src="mode.js"></script>
   </body>
 </html>
+
