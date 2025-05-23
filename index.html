@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Core theme CSS -->
     <link rel="stylesheet" href="style.css">
-   
+   <link rel="stylesheet" href="style1.css">
     
   </head>
 
@@ -47,6 +47,11 @@
     
     <div class="overlay" id="popup">
       <div class="popup">
+        <div class ="mspop">
+          <button class="diary-btn" onclick="openDiary()">📔 Nhật ký</button>
+            
+        </div>
+         
         <div class="popup-photo">
           <a href="anh/1 (12).jpg" target="_blank">
             <img src="anh/1 (12).jpg" alt="Profile Picture">
@@ -60,10 +65,6 @@
 <p>Mỗi chiều xuống, lòng anh như thầm lặng</p>  
 <p>Chỉ biết thương mà chẳng dám gọi tên</p>
 
-
-
-          
-
 <p><strong> It feels so empty without you. 🥑</strong></p>
 
         </div>
@@ -71,6 +72,63 @@
       </div>
     </div>
 
+<div class="password-overlay" id="passwordOverlay">
+    <div class="password-popup" id="passwordPopup">
+        <h3>🔒 Nhập mật khẩu(Password with 2 characters
+
+)</h3>
+        <h5>Her birthday</h5>
+        <input type="password" class="password-input" id="passwordInput" placeholder="**">
+        <div class="password-buttons">
+            <button class="password-btn confirm" onclick="checkPassword()">Xác nhận</button>
+            <button class="password-btn cancel" onclick="closePasswordPopup()">Hủy</button>
+        </div>
+        <div class="error-message" id="errorMessage">Mật khẩu không đúng!</div>
+    </div>
+</div>
+
+<div class="password-overlay" id="passwordOverlay">
+    <div class="password-popup" id="passwordPopup">
+        <h3>🔒 Nhập mật khẩu</h3>
+        <input type="password" class="password-input" id="passwordInput" placeholder="**">
+        <div class="password-buttons">
+            <button class="password-btn confirm" onclick="checkPassword()">Xác nhận</button>
+            <button class="password-btn cancel" onclick="closePasswordPopup()">Hủy</button>
+        </div>
+        <div class="error-message" id="errorMessage">Mật khẩu không đúng!</div>
+    </div>
+</div>
+
+<div class="diary-overlay" id="diaryOverlay">
+    <div class="diary-popup" id="diaryPopup">
+        <div class="diary-header">
+            <h2 class="diary-title">📔 Nhật ký của tôi</h2>
+            <button class="diary-close" onclick="closeDiary()">&times;</button>
+        </div>
+        
+        <div class="diary-navigation">
+            <button class="nav-btn" id="prevBtn" onclick="previousEntry()">← Bài trước</button>
+            <div class="current-entry-title" id="currentEntryTitle">Nhật ký 1</div>
+            <button class="nav-btn" id="nextBtn" onclick="nextEntry()">Bài sau →</button>
+        </div>
+        
+        <div class="diary-content">
+            <div class="diary-entry" id="diaryEntry"></div>
+        </div>
+        
+        <!-- Pagination cho nội dung dài -->
+        <div class="content-pagination" id="contentPagination" style="display: none;">
+            <button class="page-nav-btn" id="prevPageBtn" onclick="previousContentPage()">← Trang trước</button>
+            <span class="page-info" id="pageInfo">Trang 1/1</span>
+            <button class="page-nav-btn" id="nextPageBtn" onclick="nextContentPage()">Trang sau →</button>
+        </div>
+        
+        <div class="page-indicator" id="pageIndicator"></div>
+    </div>
+</div>
+
+
+    
     <div id="userName">
     <p>Ben</p>
     <p>@Bạn cần tìm tôi?⬇️</p>

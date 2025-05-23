@@ -1,0 +1,316 @@
+.mspop {
+
+
+  
+}
+
+.mspop .diary-btn {
+  background-color: #48bcda; /* Màu hồng */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.mspop .diary-btn:hover {
+  background-color: #17d817; /* Hồng đậm hơn khi hover */
+}
+.password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.password-popup {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 400px;
+    width: 90%;
+}
+
+.password-popup.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.password-popup h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.password-input:focus {
+    border-color: #667eea;
+}
+
+.password-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.password-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.password-btn.confirm {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.password-btn.cancel {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.password-btn:hover {
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #ff4757;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Diary Popup */
+.diary-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    backdrop-filter: blur(5px);
+}
+
+.diary-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 85vh;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.diary-popup.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.diary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 15px;
+}
+
+.diary-title {
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.diary-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.diary-close:hover {
+    color: #333;
+}
+
+.diary-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+    color: white;
+}
+
+.nav-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    background: rgba(255,255,255,0.1);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.current-entry-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+}
+
+.diary-content {
+    height: 450px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.diary-entry {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-align: justify;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+/* Pagination controls cho nội dung dài */
+.content-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+}
+
+.page-nav-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.page-nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.page-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.page-info {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.no-entry {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.page-indicator {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Scrollbar styling */
+.diary-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.diary-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.diary-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 4px;
+}
+
+.diary-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #5a6fd8, #6a4190);
+}

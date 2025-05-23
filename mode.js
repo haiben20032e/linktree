@@ -188,5 +188,219 @@ class PointerParticle {
     }
   }
   
-  PointerParticles.register();
-  
+
+
+
+
+
+
+
+
+  const diaryEntries = [
+    `Hôm nay là một ngày thật đặc biệt. Tôi đã gặp được người bạn cũ sau nhiều năm xa cách. Chúng tôi ngồi uống cà phê và chia sẻ về những kỷ niệm đẹp ngày xưa.
+
+Thời tiết hôm nay rất đẹp, nắng vàng nhẹ nhàng. Tôi cảm thấy lòng mình thật bình yên và hạnh phúc.
+
+Tối nay tôi sẽ đọc sách và nghe nhạc. Cuộc sống thật tuyệt vời khi ta biết trân trọng những điều giản dị.`,
+
+    `Một ngày làm việc khá bận rộn. Có nhiều deadline phải hoàn thành nhưng tôi đã cố gắng hết sức.
+
+Chiều về tôi đi dạo công viên, không khí trong lành giúp tôi thư giãn sau một ngày căng thẳng.
+
+Tôi nghĩ mình cần học cách cân bằng giữa công việc và cuộc sống cá nhân hơn.`,
+
+    `Hôm nay tôi nấu một món ăn mới. Tuy không hoàn hảo nhưng gia đình ai cũng khen ngon.
+
+Tối nay chúng tôi xem phim cùng nhau. Những khoảnh khắc ấm áp bên gia đình luôn là điều tôi trân trọng nhất.
+
+Cảm ơn cuộc sống đã cho tôi những người thân yêu như vậy.`,
+
+    `Ngày cuối tuần thật thoải mái. Tôi dậy muộn, ăn sáng chậm rãi và đọc báo.
+
+Buổi chiều gặp bạn bè đi cafe, chúng tôi trò chuyện về kế hoạch cho kỳ nghỉ sắp tới.
+
+Cuối ngày tôi viết nhật ký này, cảm thấy lòng mình thật nhẹ nhàng và biết ơn.`,
+
+    `Một tuần mới bắt đầu với nhiều hy vọng. Tôi đã lên kế hoạch cụ thể cho những mục tiêu trong tuần này.
+
+Sáng nay tập thể dục, cơ thể cảm thấy khỏe khoắn và tràn đầy năng lượng.
+
+Tôi tin rằng với tinh thần tích cực, mọi thứ sẽ thuận lợi.`
+];
+
+// Biến theo dõi entry hiện tại và trang nội dung
+let currentEntryIndex = 0;
+let currentContentPage = 0;
+let contentPages = [];
+const CHARS_PER_PAGE = 800; // Số ký tự tối đa mỗi trang
+
+// Hàm chia nội dung thành các trang
+function splitContentIntoPages(content) {
+    if (!content || content.length <= CHARS_PER_PAGE) {
+        return [content];
+    }
+    
+    const pages = [];
+    const paragraphs = content.split('\n\n');
+    let currentPage = '';
+    
+    for (let paragraph of paragraphs) {
+        // Nếu thêm đoạn này vào sẽ vượt quá giới hạn
+        if (currentPage.length + paragraph.length + 2 > CHARS_PER_PAGE && currentPage.length > 0) {
+            pages.push(currentPage.trim());
+            currentPage = paragraph;
+        } else {
+            if (currentPage.length > 0) {
+                currentPage += '\n\n' + paragraph;
+            } else {
+                currentPage = paragraph;
+            }
+        }
+    }
+    
+    // Thêm trang cuối
+    if (currentPage.length > 0) {
+        pages.push(currentPage.trim());
+    }
+    
+    return pages.length > 0 ? pages : [content];
+}
+
+// Hàm mở diary (được gọi từ nút)
+function openDiary() {
+    document.getElementById('passwordOverlay').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('passwordPopup').classList.add('show');
+    }, 10);
+    document.getElementById('passwordInput').focus();
+}
+
+// Hàm đóng password popup
+function closePasswordPopup() {
+    document.getElementById('passwordPopup').classList.remove('show');
+    setTimeout(() => {
+        document.getElementById('passwordOverlay').style.display = 'none';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('errorMessage').style.display = 'none';
+    }, 300);
+}
+
+// Hàm kiểm tra mật khẩu
+function checkPassword() {
+    const password = document.getElementById('passwordInput').value;
+    if (password === '23') {
+        closePasswordPopup();
+        showDiary();
+    } else {
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('passwordInput').focus();
+    }
+}
+
+// Hàm hiển thị diary
+function showDiary() {
+    document.getElementById('diaryOverlay').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('diaryPopup').classList.add('show');
+    }, 10);
+    
+    // Reset về entry đầu tiên và hiển thị
+    currentEntryIndex = 0;
+    displayCurrentEntry();
+}
+
+// Hàm đóng diary
+function closeDiary() {
+    document.getElementById('diaryPopup').classList.remove('show');
+    setTimeout(() => {
+        document.getElementById('diaryOverlay').style.display = 'none';
+    }, 300);
+}
+
+// Hàm hiển thị entry hiện tại
+function displayCurrentEntry() {
+    const currentEntry = diaryEntries[currentEntryIndex];
+    
+    // Cập nhật tiêu đề
+    document.getElementById('currentEntryTitle').textContent = `Nhật ký ${currentEntryIndex + 1}`;
+    
+    // Hiển thị nội dung
+    const diaryEntryEl = document.getElementById('diaryEntry');
+    if (currentEntry) {
+        diaryEntryEl.textContent = currentEntry;
+        diaryEntryEl.className = 'diary-entry';
+    } else {
+        diaryEntryEl.textContent = 'Không có nội dung...';
+        diaryEntryEl.className = 'diary-entry no-entry';
+    }
+    
+    // Cập nhật trạng thái nút navigation
+    updateNavigationButtons();
+    updatePageIndicator();
+}
+
+// Hàm chuyển entry trước
+function previousEntry() {
+    if (currentEntryIndex > 0) {
+        currentEntryIndex--;
+        displayCurrentEntry();
+    }
+}
+
+// Hàm chuyển entry sau
+function nextEntry() {
+    if (currentEntryIndex < diaryEntries.length - 1) {
+        currentEntryIndex++;
+        displayCurrentEntry();
+    }
+}
+
+// Hàm cập nhật trạng thái nút navigation
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    prevBtn.disabled = currentEntryIndex === 0;
+    nextBtn.disabled = currentEntryIndex === diaryEntries.length - 1;
+}
+
+// Hàm cập nhật chỉ số trang
+function updatePageIndicator() {
+    const totalEntries = diaryEntries.length;
+    document.getElementById('pageIndicator').textContent = 
+        `📖 Trang ${currentEntryIndex + 1}/${totalEntries}`;
+}
+
+// Xử lý sự kiện
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+    
+    // Đóng popup khi click bên ngoài
+    document.getElementById('passwordOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePasswordPopup();
+        }
+    });
+    
+    document.getElementById('diaryOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDiary();
+        }
+    });
+    
+    // Xử lý phím mũi tên
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('diaryOverlay').style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                previousEntry();
+            } else if (e.key === 'ArrowRight') {
+                nextEntry();
+            }
+        }
+    });
+});
