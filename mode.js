@@ -187,47 +187,7 @@ class PointerParticle {
       this.handleParticles();
     }
   }
-  
-
-
-
-
-
-
-
-
-  const diaryEntries = [
-    `Hôm nay là một ngày thật đặc biệt. Tôi đã gặp được người bạn cũ sau nhiều năm xa cách. Chúng tôi ngồi uống cà phê và chia sẻ về những kỷ niệm đẹp ngày xưa.
-
-Thời tiết hôm nay rất đẹp, nắng vàng nhẹ nhàng. Tôi cảm thấy lòng mình thật bình yên và hạnh phúc.
-
-Tối nay tôi sẽ đọc sách và nghe nhạc. Cuộc sống thật tuyệt vời khi ta biết trân trọng những điều giản dị.`,
-
-    `Một ngày làm việc khá bận rộn. Có nhiều deadline phải hoàn thành nhưng tôi đã cố gắng hết sức.
-
-Chiều về tôi đi dạo công viên, không khí trong lành giúp tôi thư giãn sau một ngày căng thẳng.
-
-Tôi nghĩ mình cần học cách cân bằng giữa công việc và cuộc sống cá nhân hơn.`,
-
-    `Hôm nay tôi nấu một món ăn mới. Tuy không hoàn hảo nhưng gia đình ai cũng khen ngon.
-
-Tối nay chúng tôi xem phim cùng nhau. Những khoảnh khắc ấm áp bên gia đình luôn là điều tôi trân trọng nhất.
-
-Cảm ơn cuộc sống đã cho tôi những người thân yêu như vậy.`,
-
-    `Ngày cuối tuần thật thoải mái. Tôi dậy muộn, ăn sáng chậm rãi và đọc báo.
-
-Buổi chiều gặp bạn bè đi cafe, chúng tôi trò chuyện về kế hoạch cho kỳ nghỉ sắp tới.
-
-Cuối ngày tôi viết nhật ký này, cảm thấy lòng mình thật nhẹ nhàng và biết ơn.`,
-
-    `Một tuần mới bắt đầu với nhiều hy vọng. Tôi đã lên kế hoạch cụ thể cho những mục tiêu trong tuần này.
-
-Sáng nay tập thể dục, cơ thể cảm thấy khỏe khoắn và tràn đầy năng lượng.
-
-Tôi tin rằng với tinh thần tích cực, mọi thứ sẽ thuận lợi.`
-];
-
+  /////////////////////////////////////////////////////////////////////////////
 // Biến theo dõi entry hiện tại và trang nội dung
 let currentEntryIndex = 0;
 let currentContentPage = 0;
@@ -404,3 +364,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
