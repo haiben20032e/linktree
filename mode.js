@@ -364,6 +364,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// CẦN THÊM: Function để chuyển [IMG] thành <img>
+function processImageTags(text) {
+    return text.replace(/\[IMG\](.*?)\[\/IMG\]/g, '<img src="$1" alt="Diary image">');
+}
 
+// CẦN SỬA: Function displayCurrentEntry()
+function displayCurrentEntry() {
+    const currentEntry = diaryEntries[currentEntryIndex];
+    
+    document.getElementById('currentEntryTitle').textContent = `Nhật ký ${currentEntryIndex + 1}`;
+    
+    const diaryEntryEl = document.getElementById('diaryEntry');
+    if (currentEntry) {
+        // SỬA: Xử lý ảnh và dùng innerHTML thay vì textContent  
+        diaryEntryEl.innerHTML = processImageTags(currentEntry);
+        diaryEntryEl.className = 'diary-entry';
+    } else {
+        diaryEntryEl.textContent = 'Không có nội dung...';
+        diaryEntryEl.className = 'diary-entry no-entry';
+    }
+    
+    updateNavigationButtons();
+    updatePageIndicator();
+}
 
 

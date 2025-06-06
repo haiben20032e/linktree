@@ -1,4 +1,5 @@
 const diaryEntries = [
+  '[IMG]anh/missu.png[/IMG]  ',
    `2025 / 1 ngày buồn nào đó
 Tớ ghét bản thân tớ. Mình chỉ đang cố hằng ngày thức dậy, đối mặt với chính bản thân mình, chỉ đang cố gắng nỗ lực chứng minh bản thân  . Tớ luôn cố gắng làm tốt mọi thứ, nhưng lại quên cả bản thân mình đang hướng đến điều gì, mà để đánh mất thứ quan trọng nhất.
 
@@ -13,8 +14,8 @@ Như người ta đã nói, khi yêu một ai, họ luôn là người đẹp nh
 
 Chỉ là khoảnh khắc cậu bỗng cười, cáu bẩn, hay gặp một thứ gì đó cute, chia sẻ cho tớ, chợt nhặng lên nhăng nhăng – khoảnh khắc ấy cứ lặp đi lặp lại trong đầu tớ. Nó thật đẹp.
 
-Viết vào ngày 4/5`
-
+Viết vào ngày 4/5`,
+' '
     
    
 
